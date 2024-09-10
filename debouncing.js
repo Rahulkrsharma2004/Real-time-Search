@@ -2,7 +2,7 @@ const fetchResults = (query) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             const allResults = ["apple", "apricot", "banana", "blueberry", "cherry", "grape", "kiwi", "lemon", "lime", "mango", "orange", "peach", "pear", "pineapple", "plum", "strawberry", "watermelon"];
-            const filteredResults = allResults.filter(item => item.includes(query.toLowerCase()));
+            const filteredResults = allResults.filter(item => item.toLowerCase().startsWith(query.toLowerCase()));
             resolve(filteredResults);
         }, 1000);
     });
@@ -11,7 +11,6 @@ const fetchResults = (query) => {
 const debounce = (func, delay) => {
     let timeoutId;
     // console.log(timeoutId)
-    console.log("line 14")
     return (...args) => {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
